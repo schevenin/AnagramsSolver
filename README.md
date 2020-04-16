@@ -16,6 +16,9 @@ verify
 install modules
 >pip install enchant
 
+run anagrams solver
+>python3 app.py
+
 deactivate environment
 >deactivate
 
