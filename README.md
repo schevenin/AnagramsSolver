@@ -18,7 +18,7 @@ this python app will find every possible combination and permutation (power sets
 >pip install enchant
 
 ##### run anagrams solver
-make sure default python symlink is mapped to python3 (else use python3)
+###### make sure default python symlink is mapped to python3 (else use python3)
 >python app.py
 
 ##### deactivate environment
