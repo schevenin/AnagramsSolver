@@ -1,5 +1,4 @@
 import enchant
-from itertools import chain, combinations
 
 
 def toString(List):
