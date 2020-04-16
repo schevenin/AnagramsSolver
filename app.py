@@ -4,6 +4,7 @@ import enchant
 allCombinations = []
 uniqueList = []
 listofwords = []
+counter = 0
 
 #functions
 def toString(List):
@@ -12,7 +13,8 @@ def toString(List):
 
 def permute(a, l, r):
     if l == r:
-        checkifword(toString(a))
+        word = toString(a)
+        checkifword(word)
     else:
         for i in range(l, r + 1):
             a[l], a[i] = a[i], a[l]
@@ -27,16 +29,17 @@ def findPermutations(letters):
 
 
 def checkifword(word):
+    global counter
+    counter += 1
     if (english_dictionary.check(word)):
         if len(word) > 2:
             listofwords.append(word)
 
 
-#prompt
+
 english_dictionary = enchant.Dict("en_US")
 print("Find Words Program v1.0")
-letters = input("What letters are you given? ")
-
+letters = input("What 6 letters are you given? ")
 
 #append all possible outcomes to list
 allCombinations.append(letters)
@@ -57,16 +60,21 @@ for i in range(6):
                 two_listed_letters.pop(z), two_listed_letters
                 allCombinations.append(two_listed_letters)
 
+
 #sort out duplicates in list
 for i in allCombinations:
     if i not in uniqueList:
         uniqueList.append(i)
 
+
 #find permutations
 for i in uniqueList:
     findPermutations(toString(i))
 
+
 #order the permutations
+print("")
 listofwords = sorted(listofwords, key=len, reverse=True)
+print(f'Found {len(listofwords)}/{counter}: ')
 for i in listofwords:
     print(i)
