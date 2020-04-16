@@ -1,5 +1,7 @@
 import enchant
 
+english_dictionary = enchant.Dict("en_US")
+
 #lists
 allCombinations = []
 uniqueList = []
@@ -36,9 +38,7 @@ def checkifword(word):
             listofwords.append(word)
 
 
-
-english_dictionary = enchant.Dict("en_US")
-print("Find Words Program v1.0")
+print("Anagrams Solver App")
 letters = input("What 6 letters are you given? ")
 
 #append all possible outcomes to list
