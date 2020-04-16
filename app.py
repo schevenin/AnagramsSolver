@@ -1,9 +1,11 @@
 import enchant
 
+#lists
 allCombinations = []
 uniqueList = []
 listofwords = []
 
+#functions
 def toString(List):
     return ''.join(List)
 
@@ -29,13 +31,15 @@ def checkifword(word):
         if len(word) > 2:
             listofwords.append(word)
 
+
+#prompt
 english_dictionary = enchant.Dict("en_US")
 print("Find Words Program v1.0")
 letters = input("What letters are you given? ")
+
+
+#append all possible outcomes to list
 allCombinations.append(letters)
-
-
-
 for i in range(6):
     five_listed_letters = list(letters)
     five_listed_letters.pop(i), five_listed_letters
@@ -53,14 +57,16 @@ for i in range(6):
                 two_listed_letters.pop(z), two_listed_letters
                 allCombinations.append(two_listed_letters)
 
-
+#sort out duplicates in list
 for i in allCombinations:
     if i not in uniqueList:
         uniqueList.append(i)
 
+#find permutations
 for i in uniqueList:
     findPermutations(toString(i))
 
+#order the permutations
 listofwords = sorted(listofwords, key=len, reverse=True)
 for i in listofwords:
     print(i)
