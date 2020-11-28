@@ -15,6 +15,7 @@ this python app will find every possible combination and permutation (power sets
 >which python
 
 ##### install modules
+
 >pip install enchant
 
 ##### run anagrams solver
@@ -24,3 +25,27 @@ this python app will find every possible combination and permutation (power sets
 ##### deactivate environment
 >deactivate
 
+
+### Windows OS:
+##### install virtualenv
+>pip install virtualenv
+
+##### create python virtual environment
+>vertualenv env
+
+##### activate virtual environment
+>env\scripts\activate
+
+##### verify
+>python --version
+
+##### install modules
+
+>pip install pyenchant
+
+##### run anagrams solver
+###### make sure default python symlink is mapped to python3 (else use python3)
+>python app.py
+
+##### deactivate environment
+>deactivate
