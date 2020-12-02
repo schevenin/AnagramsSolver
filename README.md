@@ -3,24 +3,52 @@ this python app will find every possible combination and permutation (power sets
 
 ### MacOS:
 ##### install virtualenv
->python -m pip install --user virtualenv
+`python -m pip install --user virtualenv`
 
 ##### create python virtual environment
->python -m venv env
+`python -m venv env`
 
 ##### activate virtual environment
->source env/bin/activate
+`source env/bin/activate`
 
 ##### verify
->which python
+`which python`
 
 ##### install modules
->pip install enchant
+
+`pip install enchant`
 
 ##### run anagrams solver
 ###### make sure default python symlink is mapped to python3 (else use python3)
->python app.py
+`python app.py`
 
 ##### deactivate environment
->deactivate
+`deactivate`
 
+
+### Windows OS:
+##### install virtualenv
+`pip install virtualenv`
+
+##### create python virtual environment
+`vertualenv env`
+
+##### activate virtual environment
+`env\scripts\activate`
+
+##### verify
+```
+python --version
+help(pyenchant)
+```
+
+##### install modules
+
+`pip install pyenchant`
+
+##### run anagrams solver
+###### make sure default python symlink is mapped to python3 (else use python3)
+`python app.py`
+
+##### deactivate environment
+`deactivate`
