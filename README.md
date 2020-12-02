@@ -38,6 +38,7 @@ this python app will find every possible combination and permutation (power sets
 
 ##### verify
 >python --version
+>help(pyenchant)
 
 ##### install modules
 
