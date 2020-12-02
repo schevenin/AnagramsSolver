@@ -37,8 +37,10 @@ this python app will find every possible combination and permutation (power sets
 `env\scripts\activate`
 
 ##### verify
-```python --version
-help(pyenchant)```
+```
+python --version
+help(pyenchant)
+```
 
 ##### install modules
 
