@@ -1,9 +1,11 @@
 import enchant
+import itertools
 
 english_dictionary = enchant.Dict("en_US")
 
 #lists
 combinations = []
+uniques = []
 words = []
 one = []
 two = []
@@ -36,8 +38,6 @@ def findPermutations(letters):
 
 
 def verifyWord(word):
-    global counter
-    counter += 1
     if (english_dictionary.check(word)):
         if len(word) > 2:
             if word not in words:
@@ -53,13 +53,15 @@ def output(list):
 print("Anagrams Solver App")
 letters = input("Type your six letters without spaces or special characters: ")
 
-
+'''
 # append all possible outcomes to list
 combinations.append(letters)
+print(combinations)
 for i in range(6):
     five_listed_letters = list(letters)
     five_listed_letters.pop(i), five_listed_letters
     combinations.append(five_listed_letters)
+    print(combinations)
     for x in range(5):
         four_listed_letters = list.copy(five_listed_letters)
         four_listed_letters.pop(x), four_listed_letters
@@ -74,10 +76,22 @@ for i in range(6):
                 combinations.append(two_listed_letters)
 
 
-# find permutations
+# sort out duplicates
 for i in combinations:
-    findPermutations(toString(i))
+    if i not in uniques:
+        counter += 1
+        uniques.append(i)
 
+# find permutations
+for i in uniques:
+    findPermutations(toString(i))
+'''
+
+combinations = list(itertools.permutations(letters))
+for i in combinations:
+    counter += 1
+    if verifyWord(toString(i)):
+        words.append(i)
 
 # sort words into groups by length
 for word in words:
@@ -98,7 +112,7 @@ for word in words:
 # output
 print("")
 print("Success!")
-print(f'Found {len(words)} unique dictionary words from {counter} combinations: ')
+print(f'Found {len(words)} unique dictionary words from {counter} unique combinations: ')
 print("")
 
 output(six)
