@@ -1,9 +1,13 @@
 import enchant
-import itertools
 
 english_dictionary = enchant.Dict("en_US")
 
-#lists
+# lists
+five_letter_combinations = []
+four_letter_combinations = []
+three_letter_combinations = []
+two_letter_combinations = []
+one_letter_combinations = []
 combinations = []
 uniques = []
 words = []
@@ -20,8 +24,17 @@ def toString(List):
     return ''.join(List)
 
 
+def cutLetter(string, length):
+    combinations = []
+    for letter in range(length):
+        combinations.append(string[0:letter:] + string[letter+1::])
+    return combinations
+
+
 def permute(a, l, r):
     if l == r:
+        global counter
+        counter += 1
         word = toString(a)
         verifyWord(word)
     else:
@@ -53,47 +66,35 @@ def output(list):
 print("Anagrams Solver App")
 letters = input("Type your six letters without spaces or special characters: ")
 
-'''
 # append all possible outcomes to list
 combinations.append(letters)
-print(combinations)
-for i in range(6):
-    five_listed_letters = list(letters)
-    five_listed_letters.pop(i), five_listed_letters
-    combinations.append(five_listed_letters)
-    print(combinations)
-    for x in range(5):
-        four_listed_letters = list.copy(five_listed_letters)
-        four_listed_letters.pop(x), four_listed_letters
-        combinations.append(four_listed_letters)
-        for y in range(4):
-            three_listed_letters = list.copy(four_listed_letters)
-            three_listed_letters.pop(y), three_listed_letters
-            combinations.append(three_listed_letters)
-            for z in range(3):
-                two_listed_letters = list.copy(three_listed_letters)
-                two_listed_letters.pop(z), two_listed_letters
-                combinations.append(two_listed_letters)
 
+# create all length combinations of letters
+five_letter_combinations = cutLetter(letters, 6)
+for a in five_letter_combinations:
+    combinations.append(a)
+    for each in cutLetter(a, 5):
+        four_letter_combinations.append(each)
+for b in four_letter_combinations:
+    combinations.append(b)
+    for each in cutLetter(b, 4):
+        three_letter_combinations.append(each)
+for c in three_letter_combinations:
+    combinations.append(c)
+    for each in cutLetter(c, 3):
+        two_letter_combinations.append(each)
+for d in two_letter_combinations:
+    combinations.append(d)
+    for each in cutLetter(d, 2):
+        one_letter_combinations.append(each)
 
-# sort out duplicates
-for i in combinations:
-    if i not in uniques:
-        counter += 1
-        uniques.append(i)
+# find permutations for all unique combinations
+for combination in combinations:
+    if combination not in uniques:
+        uniques.append(combination)
+        findPermutations(combination)
 
-# find permutations
-for i in uniques:
-    findPermutations(toString(i))
-'''
-
-combinations = list(itertools.permutations(letters))
-for i in combinations:
-    counter += 1
-    if verifyWord(toString(i)):
-        words.append(i)
-
-# sort words into groups by length
+# group by length for output
 for word in words:
     if (len(word) == 1):
         one.append(word)
@@ -108,16 +109,15 @@ for word in words:
     elif (len(word) == 6):
         six.append(word)
 
-
 # output
 print("")
 print("Success!")
 print(f'Found {len(words)} unique dictionary words from {counter} unique combinations: ')
 print("")
-
 output(six)
 output(five)
 output(four)
 output(three)
 output(two)
 output(one)
+print("")
