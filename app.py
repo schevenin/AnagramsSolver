@@ -58,7 +58,7 @@ def verifyWord(word):
 
 def output(list):
     if (len(list) != 0):
-        print(str(len(list[0])) + " letter words: ")
+        print(str(len(list[0])) + " letter words: ", end="")
         print(', '.join(list))
 
 
